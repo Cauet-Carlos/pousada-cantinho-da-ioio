@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pousada Cantinho da Ioiô | Hospedagem na Amazônia</title>
+  <meta name="description" content="Pousada acolhedora na comunidade Saracá, às margens do Rio Negro. Quartos confortáveis, natureza, passeios de canoa e a autêntica experiência amazônica.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/icone/icone.png">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+  <link rel="stylesheet" href="css/carrossel.css">
+  <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+
+  <!-- Header fixo -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="header__logo">
+        <img class="header__logo-mark" src="assets/icone/icone.png" alt="Logo Pousada Cantinho da Ioiô">
+        Cantinho da Ioiô
+      </a>
+
+      <nav class="header__nav">
+        <ul class="header__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="acomodacoes.html">Acomodações</a></li>
+          <li><a href="passeios.html">Passeios</a></li>
+          <li><a href="localizacao.html">Localização</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+        </ul>
+        <a href="reserva.html" class="header__cta">Reservar agora</a>
+      </nav>
+
+      <button class="header__burger" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Painel mobile -->
+  <nav class="header__mobile-panel">
+    <a href="index.html">Home</a>
+    <a href="acomodacoes.html">Acomodações</a>
+    <a href="passeios.html">Passeios</a>
+    <a href="localizacao.html">Localização</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="reserva.html" class="header__cta">Reservar agora</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__card">
+
+        <div class="hero__conteudo">
+          <p class="hero__eyebrow">Comunidade Saracá · Rio Negro, Amazonas</p>
+          <h1 class="hero__titulo">Pousada Cantinho da Ioiô</h1>
+          <p class="hero__subtitulo">Hospedagem acolhedora às margens do Rio Negro, com passeios de canoa, natureza preservada e o cuidado de quem recebe como família.</p>
+
+          <div class="hero__destaques">
+            <span class="hero__destaque">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8Z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+              Café da manhã incluso
+            </span>
+            <span class="hero__destaque">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21c.6-1 1.5-2 4-2s3.4 1 6 1 3.4-1 6-1 3.4 1 4 2"/><path d="M4 14l6-6 9 9"/><path d="M9 9l1.5-4.5L15 3"/></svg>
+              Passeios de canoa
+            </span>
+            <span class="hero__destaque">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18l-2 3H5l-2-3Z"/><path d="M5 18V9a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v9"/><path d="M9 7V4h6v3"/><line x1="2" y1="21" x2="22" y2="21"/></svg>
+              Translado
+            </span>
+            <span class="hero__destaque">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M12 8c-3-3-8-2-8-2s0 5 3 7c2 1.3 4 .5 5-1"/><path d="M12 13c3-3 8-2 8-2s0 5-3 7c-2 1.3-4 .5-5-1"/></svg>
+              Natureza preservada
+            </span>
+          </div>
+
+          <form class="widget">
+            <div class="widget__campos">
+              <div class="widget__campo">
+                <label for="widget-checkin">Check-in</label>
+                <input type="date" id="widget-checkin" name="checkin">
+              </div>
+              <div class="widget__campo">
+                <label for="widget-checkout">Check-out</label>
+                <input type="date" id="widget-checkout" name="checkout">
+              </div>
+              <div class="widget__campo">
+                <label for="widget-hospedes">Hóspedes</label>
+                <select id="widget-hospedes" name="hospedes">
+                  <option value="1">1 hóspede</option>
+                  <option value="2" selected>2 hóspedes</option>
+                  <option value="3">3 hóspedes</option>
+                  <option value="4">4 hóspedes</option>
+                  <option value="5">5+ hóspedes</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn btn--primario btn--bloco">Verificar disponibilidade</button>
+            <p class="widget__nota">Sua consulta é enviada direto para o nosso WhatsApp</p>
+          </form>
+        </div>
+
+        <div class="hero__foto">
+          <div class="carrossel" data-intervalo="6000">
+            <div class="carrossel__trilho">
+              <div class="carrossel__slide"><img src="assets/pousada/pousada1.jpg" alt="Pousada Cantinho da Ioiô"></div>
+              <div class="carrossel__slide"><img src="assets/pousada/pousada2.jpg" alt="Pousada Cantinho da Ioiô"></div>
+              <div class="carrossel__slide"><img src="assets/pousada/pousada3.jpg" alt="Pousada Cantinho da Ioiô"></div>
+              <div class="carrossel__slide"><img src="assets/pousada/pousada4.jpg" alt="Pousada Cantinho da Ioiô"></div>
+              <div class="carrossel__slide"><img src="assets/pousada/pousada5.jpg" alt="Pousada Cantinho da Ioiô"></div>
+              <div class="carrossel__slide"><img src="assets/pousada/pousada6.jpg" alt="Pousada Cantinho da Ioiô"></div>
+              <div class="carrossel__slide"><img src="assets/pousada/pousada7.jpg" alt="Pousada Cantinho da Ioiô"></div>
+            </div>
+            <button class="carrossel__seta carrossel__seta--prev" aria-label="Foto anterior">‹</button>
+            <button class="carrossel__seta carrossel__seta--next" aria-label="Próxima foto">›</button>
+            <div class="carrossel__pontos"></div>
+          </div>
+          <div class="hero__foto-selo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <span>Fale direto com a gente pelo WhatsApp, sem intermediários</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Divisor ondulado -->
+  <svg class="divisor-secao" viewBox="0 0 1440 50" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,20 C240,50 480,0 720,15 C960,30 1200,45 1440,10 L1440,50 L0,50 Z"></path>
+  </svg>
+
+  <!-- Diferenciais -->
+  <section class="diferenciais">
+    <div class="container">
+      <div class="diferenciais__cabecalho">
+        <p class="diferenciais__eyebrow">Por que escolher a gente</p>
+        <h2 class="diferenciais__titulo">Uma estadia com a alma da Amazônia</h2>
+        <p class="diferenciais__subtitulo">Mais do que hospedagem, uma experiência acolhedora às margens do Rio Negro, pensada em cada detalhe.</p>
+      </div>
+
+      <div class="diferenciais__grade">
+
+        <div class="diferencial">
+          <div class="diferencial__icone diferencial__icone--ambar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8Z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h3 class="diferencial__titulo">Café da manhã regional</h3>
+          <p class="diferencial__texto">Frutas, tapioca e sabores típicos da região, servidos todas as manhãs para começar o dia com energia.</p>
+        </div>
+
+        <div class="diferencial">
+          <div class="diferencial__icone diferencial__icone--azul">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21c.6-1 1.5-2 4-2s3.4 1 6 1 3.4-1 6-1 3.4 1 4 2"/><path d="M4 14l6-6 9 9"/><path d="M9 9l1.5-4.5L15 3"/></svg>
+          </div>
+          <h3 class="diferencial__titulo">Passeios de canoa</h3>
+          <p class="diferencial__texto">Navegue pelo Rio Negro e pelos igarapés ao redor, com guias locais que conhecem cada canto da região.</p>
+        </div>
+
+        <div class="diferencial">
+          <div class="diferencial__icone diferencial__icone--verde">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M12 8c-3-3-8-2-8-2s0 5 3 7c2 1.3 4 .5 5-1"/><path d="M12 13c3-3 8-2 8-2s0 5-3 7c-2 1.3-4 .5-5-1"/></svg>
+          </div>
+          <h3 class="diferencial__titulo">Natureza preservada</h3>
+          <p class="diferencial__texto">Cercada por floresta nativa, a pousada fica dentro da comunidade Saracá, longe da agitação da cidade.</p>
+        </div>
+
+        <div class="diferencial">
+          <div class="diferencial__icone diferencial__icone--terracota">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <h3 class="diferencial__titulo">Atendimento direto</h3>
+          <p class="diferencial__texto">Fale sempre com quem cuida da pousada de verdade, sem intermediários — resposta rápida pelo WhatsApp.</p>
+        </div>
+
+        <div class="diferencial">
+          <div class="diferencial__icone diferencial__icone--madeira">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18l-2 3H5l-2-3Z"/><path d="M5 18V9a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v9"/><path d="M9 7V4h6v3"/><line x1="2" y1="21" x2="22" y2="21"/></svg>
+          </div>
+          <h3 class="diferencial__titulo">Translado disponível</h3>
+          <p class="diferencial__texto">Se precisar, ajudamos a organizar o transporte até a pousada, incluindo o trecho fluvial para sua chegada na pousada.</p>
+        </div>
+
+        <div class="diferencial">
+          <div class="diferencial__icone diferencial__icone--azul-claro">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/></svg>
+          </div>
+          <h3 class="diferencial__titulo">Localização exclusiva</h3>
+          <p class="diferencial__texto">Um refúgio dentro da comunidade Saracá, às margens do Rio Negro — a poucos minutos de Manaus.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Divisor ondulado (transição areia → branco) -->
+  <svg class="divisor-secao divisor-secao--inversa" viewBox="0 0 1440 50" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,30 C240,0 480,50 720,35 C960,20 1200,5 1440,40 L1440,50 L0,50 Z"></path>
+  </svg>
+
+  <!-- Prévia de quartos -->
+  <section class="quartos-preview">
+    <div class="container">
+      <div class="quartos-preview__cabecalho">
+        <div>
+          <p class="quartos-preview__eyebrow">Acomodações</p>
+          <h2 class="quartos-preview__titulo">Escolha o cantinho ideal para sua estadia</h2>
+        </div>
+        <a href="acomodacoes.html" class="quartos-preview__link-todos">
+          Ver todas as acomodações
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="quartos-preview__grade">
+
+        <div class="quarto-card">
+          <div class="quarto-card__foto">
+            <img src="assets/quartos/BemTeVi/btv2.jpeg" alt="Quartos triplos da Pousada Cantinho da Ioiô">
+          </div>
+          <div class="quarto-card__corpo">
+            <h3 class="quarto-card__titulo">Quartos Triplos - Bem-te-vi, Beija-flor e Tucano</h3>
+            <p class="quarto-card__texto">Fornecemos 3 quartos com a mesma estrutura, 1 cama de casal e 1 de solteiro para 1 a 3 hóspedes cada.</p>
+            <div class="quarto-card__tags">
+              <span class="quarto-card__tag">Ar-condicionado</span>
+              <span class="quarto-card__tag">Banheiro privativo</span>
+              <span class="quarto-card__tag">1 a 3 hóspedes</span>
+            </div>
+            <a href="acomodacoes.html" class="quarto-card__link">
+              Ver os 3 quartos
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="quarto-card">
+          <div class="quarto-card__foto">
+            <img src="assets/quartos/Japiim/japiim2.jpeg" alt="Quarto Japiim da Pousada Cantinho da Ioiô">
+          </div>
+          <div class="quarto-card__corpo">
+            <h3 class="quarto-card__titulo">Quarto Único — Japiim </h3>
+            <p class="quarto-card__texto">Nosso único quádruplo, com 4 camas de solteiro. Como só existe 1, vale reservar com antecedência.</p>
+            <div class="quarto-card__tags">
+              <span class="quarto-card__tag">4 camas de solteiro</span>
+              <span class="quarto-card__tag">Banheiro privativo</span>
+              <span class="quarto-card__tag">Até 4 hóspedes</span>
+            </div>
+            <a href="acomodacoes.html" class="quarto-card__link">
+              Ver detalhes
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grade">
+
+        <div>
+          <a href="index.html" class="footer__marca">
+            <span class="footer__marca-mark">CI</span>
+            Cantinho da Ioiô
+          </a>
+          <p class="footer__texto">Uma pousada acolhedora na comunidade Saracá, às margens do Rio Negro, no coração da Amazônia.</p>
+          <div class="footer__redes">
+            <a href="https://www.instagram.com/pousadacantinhodaioio" class="footer__rede" target="_blank" rel="noopener" aria-label="Instagram da pousada">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://wa.me/5592981310470" class="footer__rede" target="_blank" rel="noopener" aria-label="WhatsApp da pousada">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <p class="footer__coluna-titulo">Navegação</p>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="acomodacoes.html">Acomodações</a></li>
+          <li><a href="passeios.html">Passeios</a></li>
+            <li><a href="localizacao.html">Localização</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer__coluna-titulo">Contato</p>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div class="footer__contato-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/></svg>
+              <span>Comunidade Saracá, Rio Negro — Amazonas</span>
+            </div>
+            <div class="footer__contato-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              <a href="https://wa.me/5592981310470" target="_blank" rel="noopener">(92) 98131-0470</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer__base">
+        <span>© 2026 Pousada Cantinho da Ioiô. Todos os direitos reservados.</span>
+        <span>Feito com carinho às margens do Rio Negro</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/header.js"></script>
+  <script src="js/hero.js"></script>
+  <script src="js/carrossel.js"></script>
+</body>
+</html>

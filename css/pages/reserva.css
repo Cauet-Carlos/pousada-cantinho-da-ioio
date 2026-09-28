@@ -1,0 +1,64 @@
+.reserva-secao { padding: 50px 0 90px; }
+.reserva-grade { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: start; }
+.reserva-card { background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio); padding: 28px; }
+.reserva-card + .reserva-card { margin-top: 20px; }
+.reserva-card__titulo { font-family: var(--fonte-titulo); font-size: 18px; font-weight: 600; color: var(--azul-rio); margin-bottom: 18px; }
+
+/* Calendário */
+.cal-topo { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.cal-topo button { background: var(--areia); border: 1px solid var(--borda); border-radius: 6px; width: 32px; height: 32px; cursor: pointer; color: var(--texto-escuro); font-size: 16px; }
+.cal-titulo { font-family: var(--fonte-titulo); font-weight: 600; color: var(--texto-escuro); }
+.cal-display { background: var(--areia); border: 1px solid var(--borda); border-radius: 8px; padding: 10px 14px; font-size: 13.5px; font-weight: 600; color: var(--azul-rio); text-align: center; margin-bottom: 16px; }
+.cal-grade { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.cal-diasemana { text-align: center; font-size: 11px; font-weight: 600; color: var(--texto-secundario); padding: 4px 0; }
+.cal-dia { aspect-ratio: 1; border: none; background: transparent; border-radius: 6px; font-size: 13px; cursor: pointer; color: var(--texto-escuro); }
+.cal-dia:hover:not(:disabled) { background: var(--areia); }
+.cal-dia--passado { color: var(--borda); cursor: not-allowed; }
+.cal-dia--ocupado { color: var(--terracota); text-decoration: line-through; cursor: not-allowed; opacity: 0.5; }
+.cal-dia--selecionado { background: var(--azul-rio); color: var(--texto-claro); font-weight: 600; }
+.cal-dia--intervalo { background: var(--areia-escura); }
+
+/* Campos */
+.campo { margin-bottom: 16px; }
+.campo label { display: block; font-size: 12.5px; font-weight: 600; color: var(--texto-secundario); text-transform: uppercase; margin-bottom: 6px; }
+.campo input[type="text"], .campo input[type="number"] {
+  width: 100%; border: 1px solid var(--borda); border-radius: 8px; padding: 10px 12px; font-family: var(--fonte-corpo); font-size: 14px;
+}
+.campo input:focus { outline: none; border-color: var(--ambar); }
+
+.opcoes-lista { display: flex; flex-direction: column; gap: 10px; }
+.opcao-item { display: flex; align-items: center; gap: 10px; border: 1px solid var(--borda); border-radius: 8px; padding: 12px; cursor: pointer; }
+.opcao-item:has(input:checked) { border-color: var(--ambar); background: var(--areia); }
+.opcao-item input { margin-top: 0; flex-shrink: 0; }
+.opcao-item strong { display: block; font-size: 13.5px; color: var(--texto-escuro); }
+.opcao-item span { font-size: 12px; color: var(--texto-secundario); }
+.opcao-item--indisponivel { opacity: 0.55; cursor: not-allowed; text-decoration: line-through; }
+.opcao-item--indisponivel:has(input) { background: transparent; }
+.opcao-status { margin-left: auto; font-size: 11px; font-weight: 600; color: var(--terracota); text-decoration: none; white-space: nowrap; }
+.opcoes-lista__dica { font-size: 12px; color: var(--texto-secundario); margin-top: 8px; }
+
+.toggle-grupo { display: flex; gap: 10px; }
+.toggle-opcao { flex: 1; text-align: center; border: 1px solid var(--borda); border-radius: 8px; padding: 10px; cursor: pointer; font-size: 13.5px; font-weight: 600; color: var(--texto-secundario); }
+.toggle-opcao:has(input:checked) { border-color: var(--azul-rio); background: var(--azul-rio); color: var(--texto-claro); }
+.toggle-opcao input { display: none; }
+
+.passeios-checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; max-height: 260px; overflow-y: auto; padding-right: 4px; }
+.passeio-check { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--texto-escuro); }
+.passeios-link { font-size: 12.5px; color: var(--terracota); margin-top: 10px; display: inline-block; }
+
+.aviso-conflito { display: none; background: #FDECEA; border: 1px solid #E8A33D; color: var(--madeira); font-size: 13px; padding: 12px; border-radius: 8px; margin-bottom: 14px; }
+.aviso-conflito.mostrar { display: block; }
+
+.widget__nota { font-size: 12px; color: var(--texto-secundario); text-align: center; margin-top: 10px;}
+
+@media (max-width: 900px) {
+  .reserva-grade { grid-template-columns: 1fr; }
+  .passeios-checklist { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 901px) {
+  .reserva-grade > .reserva-card:first-child {
+    position: sticky;
+    top: 100px;
+  }
+}

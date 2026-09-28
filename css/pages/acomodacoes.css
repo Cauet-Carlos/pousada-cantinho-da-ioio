@@ -1,0 +1,266 @@
+/* ===== Lista detalhada de quartos ===== */
+.quartos-lista {
+  padding: 20px 0 40px;
+}
+
+.quarto-detalhe {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  padding: 56px 0;
+  border-bottom: 1px solid var(--borda);
+}
+
+.quarto-detalhe:last-child { border-bottom: none; }
+
+.quarto-detalhe--invertido .quarto-detalhe__foto { order: 2; }
+.quarto-detalhe--invertido .quarto-detalhe__conteudo { order: 1; }
+
+.quarto-detalhe__foto {
+  height: 380px;
+  background: var(--areia);
+  border-radius: var(--raio);
+  position: relative;
+  overflow: hidden;
+}
+
+.quarto-detalhe__foto-legenda {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--texto-secundario);
+  font-size: 13px;
+  text-align: center;
+  padding: 24px;
+  border: 1px dashed var(--borda);
+  border-radius: var(--raio);
+}
+
+.quarto-detalhe__tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--branco);
+  background: var(--verde-floresta);
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.quarto-detalhe__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 600;
+  color: var(--texto-escuro);
+  margin-bottom: 12px;
+}
+
+.quarto-detalhe__texto {
+  font-size: 15px;
+  color: var(--texto-secundario);
+  line-height: 1.65;
+  margin-bottom: 22px;
+  text-align: justify;
+}
+
+.quarto-detalhe__comodidades {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+  margin-bottom: 26px;
+}
+
+.quarto-detalhe__comodidade {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--texto-escuro);
+}
+
+.quarto-detalhe__comodidade svg {
+  width: 15px;
+  height: 15px;
+  color: var(--verde-floresta);
+  flex-shrink: 0;
+}
+
+.quarto-detalhe__rodape {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.quarto-detalhe__capacidade {
+  font-size: 13.5px;
+  color: var(--texto-secundario);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quarto-detalhe__capacidade svg {
+  width: 16px;
+  height: 16px;
+  color: var(--madeira);
+}
+
+@media (max-width: 860px) {
+  .quarto-detalhe {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 40px 0;
+  }
+
+  .quarto-detalhe--invertido .quarto-detalhe__foto,
+  .quarto-detalhe--invertido .quarto-detalhe__conteudo {
+    order: initial;
+  }
+
+  .quarto-detalhe__foto { height: 260px; }
+}
+
+/* ===== Tabela de valores ===== */
+.tabela-valores {
+  padding: 70px 0;
+  background: var(--branco);
+  text-align: center;
+}
+
+.tabela-valores__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 600;
+  color: var(--azul-rio);
+  margin-bottom: 10px;
+}
+
+.tabela-valores__subtitulo {
+  font-size: 14.5px;
+  color: var(--texto-secundario);
+  max-width: 480px;
+  margin: 0 auto 32px;
+}
+
+.tabela-precos-wrapper {
+  overflow-x: auto;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.tabela-precos {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  overflow: hidden;
+}
+
+.tabela-precos th {
+  background: var(--azul-rio);
+  color: var(--texto-claro);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 14px 16px;
+  text-align: center;
+}
+
+.tabela-precos th:first-child {
+  text-align: left;
+}
+
+.tabela-precos td {
+  padding: 16px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--texto-escuro);
+  border-top: 1px solid var(--borda);
+}
+
+.tabela-precos td:first-child {
+  text-align: left;
+  font-weight: 500;
+  color: var(--texto-secundario);
+}
+
+.tabela-valores__nota {
+  font-size: 12.5px;
+  color: var(--texto-secundario);
+  margin-top: 16px;
+}
+
+/* ===== Comodidades gerais ===== */
+.gerais {
+  background: var(--areia);
+  padding: 70px 0;
+}
+
+.gerais__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 600;
+  color: var(--azul-rio);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.gerais__grade {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.gerais__item {
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 22px 18px;
+  text-align: center;
+}
+
+.gerais__item svg {
+  width: 26px;
+  height: 26px;
+  color: var(--terracota);
+  margin: 0 auto 12px;
+}
+
+.gerais__item span {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--texto-escuro);
+}
+
+@media (max-width: 860px) {
+  .gerais__grade { grid-template-columns: repeat(2, 1fr); }
+}
+
+.quarto-detalhe__nomes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.quarto-nome-chip {
+  background: var(--areia);
+  border: 1px solid var(--borda);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto-escuro);
+  transition: border-color 0.2s ease;
+}
+
+.quarto-nome-chip:hover {
+  border-color: var(--terracota);
+}

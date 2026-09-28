@@ -1,0 +1,96 @@
+/* ===== Design tokens ===== */
+:root {
+  --azul-rio: #1B3A5C;
+  --azul-rio-claro: #2D5F7C;
+  --ambar: #E8A33D;
+  --terracota: #D4692A;
+  --verde-floresta: #3F5F42;
+  --verde-floresta-escuro: #26402A;
+  --madeira: #6B4226;
+
+  --branco: #FFFFFF;
+  --areia: #F7F4EC;
+  --borda: #E4DFCF;
+  --texto-escuro: #23201B;
+  --texto-secundario: #6F6A5E;
+  --texto-claro: #FFFFFF;
+
+  --fonte-titulo: 'Fraunces', serif;
+  --fonte-corpo: 'Inter', sans-serif;
+
+  --header-altura: 76px;
+  --raio: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--fonte-corpo);
+  color: var(--texto-escuro);
+  background: var(--branco);
+  line-height: 1.6;
+  padding-top: var(--header-altura);
+}
+
+img { max-width: 100%; display: block; }
+
+a { text-decoration: none; color: inherit; }
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== Botões ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 26px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: var(--fonte-corpo);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.btn:hover { transform: translateY(-1px); }
+
+.btn--primario {
+  background: var(--terracota);
+  color: var(--texto-claro);
+}
+
+.btn--primario:hover { background: #b8571f; }
+
+.btn--outline {
+  background: transparent;
+  color: var(--azul-rio);
+  border: 1.5px solid var(--azul-rio);
+}
+
+.btn--outline:hover { background: var(--areia); }
+
+.btn--bloco { width: 100%; }
+
+/* ===== Divisor ondulado (assinatura visual) ===== */
+.divisor-rio {
+  display: block;
+  width: 100%;
+  height: 48px;
+}
+
+.divisor-secao {
+  display: block;
+  width: 100%;
+  height: 50px;
+}
+
+.divisor-secao path {
+  fill: var(--areia);
+}

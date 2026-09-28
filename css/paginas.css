@@ -1,0 +1,60 @@
+/* ===== Banner de página interna ===== */
+.pagina-banner {
+  background: var(--areia);
+  padding: 40px 0;
+  text-align: center;
+}
+
+.pagina-banner__eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.pagina-banner__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(24px, 4vw, 38px);
+  font-weight: 600;
+  color: var(--azul-rio);
+  margin-bottom: 12px;
+}
+
+.pagina-banner__subtitulo {
+  font-size: 15px;
+  color: var(--texto-secundario);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ===== CTA final ===== */
+.cta-final {
+  background: var(--azul-rio-claro);
+  padding: 70px 0;
+  text-align: center;
+}
+
+.cta-final__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 600;
+  color: var(--texto-claro);
+  margin-bottom: 12px;
+}
+
+.cta-final__texto {
+  font-size: 15px;
+  color: rgba(245, 240, 232, 0.85);
+  margin-bottom: 28px;
+}
+
+/* Divisor entre o CTA final (azul claro) e o rodapé (azul escuro) */
+.divisor-secao--cta {
+  background: var(--azul-rio-claro);
+}
+
+.divisor-secao--cta path {
+  fill: var(--azul-rio);
+}
