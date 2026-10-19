@@ -58,3 +58,23 @@
 .divisor-secao--cta path {
   fill: var(--azul-rio);
 }
+
+/* ===== Faixa final: botão + link ===== */
+.cta-final__acoes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+}
+
+.cta-final__link {
+  color: rgba(245, 240, 232, 0.9);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.2s ease;
+}
+
+.cta-final__link:hover { color: var(--ambar); }

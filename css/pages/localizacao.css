@@ -133,6 +133,7 @@
   border: 1px solid var(--borda);
   border-radius: var(--raio);
   padding: 26px 22px;
+  text-align: justify;
 }
 
 .como-chegar__numero {

@@ -57,6 +57,12 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
+    // Bloqueia 0 noites (e saída antes da chegada). Datas AAAA-MM-DD comparam como texto.
+    if (checkout <= checkin) {
+      mostrarAviso('A data de saída precisa ser depois da data de chegada.');
+      return;
+    }
+
     var quartosMarcados = Array.prototype.slice.call(form.querySelectorAll('input[name="quarto"]:checked'));
     if (quartosMarcados.length === 0) {
       mostrarAviso('Selecione ao menos um quarto disponível.');
@@ -65,10 +71,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Checagem final de segurança (o quarto já vem desabilitado se ocupado,
     // mas confere de novo caso os dados tenham sido carregados nesse meio-tempo).
-    if (typeof quartoOcupado !== 'undefined' && typeof verificarDisponibilidadeQuartos === 'function') {
+    if (typeof verificarDisponibilidadeQuartos === 'function' && typeof lerDataLocal === 'function') {
+      var statusFinal = verificarDisponibilidadeQuartos(lerDataLocal(checkin), lerDataLocal(checkout));
       var conflita = quartosMarcados.some(function (el) {
-        return verificarDisponibilidadeQuartos(new Date(checkin), new Date(checkout))
-          .find(function (q) { return q.nome === el.value; }).disponivel === false;
+        var q = statusFinal.find(function (s) { return s.nome === el.value; });
+        return q && q.disponivel === false;
       });
       if (conflita) {
         mostrarAviso('Um dos quartos escolhidos ficou indisponível. Atualize a seleção antes de enviar.');
@@ -82,14 +89,14 @@ document.addEventListener('DOMContentLoaded', function () {
     var quartosNomes = quartosMarcados.map(function (el) { return el.value; }).join(', ');
     var passeiosMarcados = Array.prototype.slice.call(form.querySelectorAll('input[name="passeio"]:checked')).map(function (el) { return el.value; });
 
-    var msg = 'Olá! Gostaria de fazer uma solicitação de reserva.\n';
+    var msg = 'Olá! Gostaria de fazer uma solicitação de reserva.\n\n';
     msg += 'Responsável: ' + responsavel + '\n';
     msg += 'Check-in: ' + formatarData(checkin) + '\n';
     msg += 'Check-out: ' + formatarData(checkout) + '\n';
     msg += 'Quarto(s): ' + quartosNomes + '\n';
     msg += 'Hóspedes: ' + hospedes + '\n';
     msg += 'Translado: ' + translado + '\n';
-    msg += 'Passeios: ' + (passeiosMarcados.length ? passeiosMarcados.join(', ') : 'Nenhum selecionado') + '\n';
+    msg += 'Passeios: ' + (passeiosMarcados.length ? passeiosMarcados.join(', ') : 'Nenhum selecionado') + '\n\n';
     msg += 'Aguardo confirmação de disponibilidade, obrigado(a)!';
 
     window.open('https://wa.me/' + numeroWhatsApp + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');

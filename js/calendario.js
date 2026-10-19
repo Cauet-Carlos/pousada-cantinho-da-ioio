@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   if (checkoutUrl) {
     var dfim = new Date(checkoutUrl + 'T00:00:00');
-    if (!isNaN(dfim)) selecaoFim = dfim;
+    // Só aceita a saída se for depois da chegada (bloqueia 0 noites vindo da URL)
+    if (!isNaN(dfim) && selecaoInicio && dfim > selecaoInicio) selecaoFim = dfim;
   }
 
   var meses = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
@@ -30,6 +31,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function diaTotalmenteIndisponivel(data) {
     if (typeof existeQuartoLivre !== 'function') return false;
+    // A saída já escolhida continua marcada, mesmo que não valha como chegada
+    if (selecaoFim && data.getTime() === selecaoFim.getTime()) return false;
+    // Escolhendo a SAÍDA: vale se, entre a chegada e esse dia, sobra algum quarto livre
+    if (selecaoInicio && !selecaoFim && data > selecaoInicio) {
+      return !existeQuartoLivre(selecaoInicio, data);
+    }
     var fim = new Date(data); fim.setDate(fim.getDate() + 1);
     return !existeQuartoLivre(data, fim);
   }
@@ -73,6 +80,11 @@ document.addEventListener('DOMContentLoaded', function () {
         btn.addEventListener('click', function (dataClicada) {
           return function () {
             if (!selecaoInicio || (selecaoInicio && selecaoFim)) {
+              // Clicar na saída já escolhida não pode virar chegada se ela estiver bloqueada
+              if (selecaoFim && dataClicada.getTime() === selecaoFim.getTime()) {
+                var umDiaDepois = new Date(dataClicada); umDiaDepois.setDate(umDiaDepois.getDate() + 1);
+                if (typeof existeQuartoLivre === 'function' && !existeQuartoLivre(dataClicada, umDiaDepois)) return;
+              }
               selecaoInicio = dataClicada; selecaoFim = null;
             } else if (dataClicada > selecaoInicio) {
               selecaoFim = dataClicada;
@@ -93,6 +105,11 @@ document.addEventListener('DOMContentLoaded', function () {
     return String(d.getDate()).padStart(2,'0') + '/' + String(d.getMonth()+1).padStart(2,'0') + '/' + d.getFullYear();
   }
 
+  // AAAA-MM-DD no horário LOCAL (toISOString converte para UTC e muda o dia).
+  function formatarDataIso(d) {
+    return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  }
+
   function atualizarDisplay() {
     if (selecaoInicio && selecaoFim) {
       display.textContent = formatarData(selecaoInicio) + '  →  ' + formatarData(selecaoFim);
@@ -101,8 +118,8 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       display.textContent = 'Selecione as datas';
     }
-    wrap.dataset.checkin = selecaoInicio ? selecaoInicio.toISOString().slice(0,10) : '';
-    wrap.dataset.checkout = selecaoFim ? selecaoFim.toISOString().slice(0,10) : '';
+    wrap.dataset.checkin = selecaoInicio ? formatarDataIso(selecaoInicio) : '';
+    wrap.dataset.checkout = selecaoFim ? formatarDataIso(selecaoFim) : '';
 
     // Adiado (setTimeout 0) para garantir que reserva.js já registrou
     // window.aoSelecionarDatas, mesmo quando isso roda na pré-seleção inicial.
@@ -122,6 +139,14 @@ document.addEventListener('DOMContentLoaded', function () {
   btnNext.addEventListener('click', function () {
     mesAtual = new Date(mesAtual.getFullYear(), mesAtual.getMonth() + 1, 1);
     renderizar();
+  });
+
+  // Quando a planilha termina de carregar, redesenha o calendário e refaz a checagem dos quartos
+  document.addEventListener('disponibilidade:carregada', function () {
+    renderizar();
+    if (selecaoInicio && selecaoFim && typeof window.aoSelecionarDatas === 'function') {
+      window.aoSelecionarDatas(selecaoInicio, selecaoFim);
+    }
   });
 
   atualizarDisplay();

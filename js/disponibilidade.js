@@ -1,5 +1,5 @@
 // URL_PLANILHA: link da planilha Google publicada como CSV.
-const URL_PLANILHA = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTz96vN8yIn0B-_yDRv5F3uTTLjrqYs3Z2M-j-GzvOBV7BaCnXZrmPzHQbT5Au7lrWwnC3_FoQ1ilo9/pub?gid=1767532748&single=true&output=csv';
+const URL_PLANILHA = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSPutcmZkPet7zmbIPfSkrECj-cJbUrQ6_XvYTBK-Z1BVxeydhQF5pz3VqBQtb45RLDe9XBrXXBsIPA/pub?gid=1354800231&single=true&output=csv';
 
 // Lista canônica dos quartos reais da pousada.
 const QUARTOS = [
@@ -21,28 +21,67 @@ async function carregarDisponibilidade() {
     console.error('Não foi possível carregar a disponibilidade:', erro);
     reservas = [];
   }
+  // Avisa o calendário e o formulário que os dados chegaram
+  document.dispatchEvent(new Event('disponibilidade:carregada'));
+}
+
+// Converte 'AAAA-MM-DD' em Date no horário LOCAL.
+// (new Date('AAAA-MM-DD') seria lido como UTC e deslocaria o dia em Manaus.)
+// Devolve uma data inválida (NaN) se o texto não estiver nesse formato.
+function lerDataLocal(texto) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec((texto || '').trim());
+  if (!m) return new Date(NaN);
+  return new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
 }
 
 // CSV esperado: checkin,checkout,quarto,hospede — uma linha por quarto reservado.
-function converterCsvParaReservas(csv) {
-  const linhas = csv.trim().split('\n').slice(1);
-  return linhas
-    .filter(function (linha) { return linha.trim() !== ''; })
-    .map(function (linha) {
-      const colunas = linha.split(',');
-      return {
-        inicio: new Date(colunas[0] ? colunas[0].trim() : ''),
-        fim: new Date(colunas[1] ? colunas[1].trim() : ''),
-        quarto: colunas[2] ? colunas[2].trim() : ''
-      };
-    })
-    .filter(function (r) {
-      return !isNaN(r.inicio) && !isNaN(r.fim) && r.quarto !== '';
-    });
+// Compara nomes sem maiúsculas, acentos, hífen ou espaço: "Bemtevi" = "Bem-te-vi".
+function normalizarNome(texto) {
+  return String(texto || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase().replace(/[^a-z0-9]/g, '');
 }
 
+// Devolve o nome oficial do quarto (ex.: "Tucano") ou '' se não reconhecer.
+function nomeOficialDoQuarto(texto) {
+  const chave = normalizarNome(texto);
+  const achado = QUARTOS.find(function (q) { return normalizarNome(q.nome) === chave; });
+  return achado ? achado.nome : '';
+}
+
+// CSV esperado: checkin,checkout,quarto,hospede — uma linha por quarto reservado.
+// Linhas inválidas são descartadas, com aviso no console (F12).
+function converterCsvParaReservas(csv) {
+  const linhas = csv.trim().split('\n').slice(1);
+  const resultado = [];
+  linhas.forEach(function (linha) {
+    if (linha.replace(/,/g, '').trim() === '') return;
+    const colunas = linha.split(',');
+    const inicio = lerDataLocal(colunas[0]);
+    const fim = lerDataLocal(colunas[1]);
+    const quartoTexto = colunas[2] ? colunas[2].trim() : '';
+    const quarto = nomeOficialDoQuarto(quartoTexto);
+
+    let motivo = '';
+    if (isNaN(inicio) || isNaN(fim)) motivo = 'data inválida (use AAAA-MM-DD)';
+    else if (!quarto) motivo = 'quarto não reconhecido: "' + quartoTexto + '"';
+    else if (fim <= inicio) motivo = 'saída não é depois da chegada';
+
+    if (motivo) {
+      // Cabeçalho e título não são reservas: não avisa por eles.
+      if (String(colunas[0]).trim().toLowerCase() !== 'checkin') {
+        console.warn('Linha ignorada (' + motivo + '): ' + linha.trim());
+      }
+      return;
+    }
+    resultado.push({ inicio: inicio, fim: fim, quarto: quarto });
+  });
+  return resultado;
+}
+
+// Regra da pousada: ninguém entra no mesmo dia em que outro hóspede sai.
+// Por isso o dia da saída também conta como ocupado (<= e >=, não < e >).
 function periodosSeSobrepoem(inicioA, fimA, inicioB, fimB) {
-  return inicioA < fimB && fimA > inicioB;
+  return inicioA <= fimB && fimA >= inicioB;
 }
 
 // Função pura: um quarto específico está ocupado num período?
@@ -76,6 +115,6 @@ if (typeof document !== 'undefined') {
 if (typeof module !== 'undefined') {
   module.exports = {
     converterCsvParaReservas, quartoOcupado, verificarDisponibilidadeQuartos,
-    existeQuartoLivre, QUARTOS
+    existeQuartoLivre, lerDataLocal, QUARTOS
   };
 }
