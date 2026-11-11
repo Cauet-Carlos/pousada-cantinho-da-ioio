@@ -134,3 +134,9 @@
     gap: 32px;
   }
 }
+
+@media (max-width: 860px) {
+  .footer__texto {
+    max-width: none;
+  }
+}

@@ -264,3 +264,11 @@
 .quarto-nome-chip:hover {
   border-color: var(--terracota);
 }
+
+@media (max-width: 860px) {
+  .quarto-detalhe__rodape {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+}

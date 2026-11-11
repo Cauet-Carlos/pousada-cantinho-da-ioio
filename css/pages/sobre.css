@@ -4,14 +4,14 @@
 }
 
 .historia__grade {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: center;
+  display: flow-root; /* faz a seção envolver a foto flutuante */
 }
 
 .historia__foto {
-  height: 420px;
+  float: left;
+  width: calc(50% - 28px);
+  margin: 0 56px 0 0;
+  height: 518px;
   background: var(--areia);
   border-radius: var(--raio);
   position: relative;
@@ -46,7 +46,9 @@
   font-size: clamp(26px, 3.4vw, 34px);
   font-weight: 600;
   color: var(--azul-rio);
+  line-height: 1.2;
   margin-bottom: 18px;
+  text-align: justify;
 }
 
 .historia__texto {
@@ -54,6 +56,7 @@
   color: var(--texto-secundario);
   line-height: 1.7;
   margin-bottom: 16px;
+  text-align: justify;
 }
 
 .historia__texto:last-of-type { margin-bottom: 0; }
@@ -63,7 +66,12 @@
     grid-template-columns: 1fr;
     gap: 28px;
   }
-  .historia__foto { height: 280px; }
+    .historia__foto {
+    float: none;
+    width: 100%;
+    margin: 0 0 28px;
+    height: 280px;
+  }
 }
 
 /* ===== Equipe / quem recebe ===== */

@@ -172,3 +172,46 @@ a { text-decoration: none; color: inherit; }
   .whatsapp-flutuante { display: none; }
 }
 
+/* Botão flutuante do Instagram (lado esquerdo) */
+.instagram-flutuante {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: linear-gradient(45deg, #F9A03F, #E1306C 50%, #833AB4);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.instagram-flutuante img { width: 24px; height: 24px; display: block; }
+.instagram-flutuante__rotulo {
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: max-width 0.25s, opacity 0.2s, margin 0.25s;
+}
+.instagram-flutuante:hover,
+.instagram-flutuante:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+.instagram-flutuante:hover .instagram-flutuante__rotulo,
+.instagram-flutuante:focus-visible .instagram-flutuante__rotulo {
+  max-width: 160px;
+  opacity: 1;
+  margin-left: 10px;
+}
+@media (max-width: 860px) {
+  .instagram-flutuante { height: 44px; left: 14px; bottom: 14px; }
+  .instagram-flutuante:hover .instagram-flutuante__rotulo { max-width: 0; margin-left: 0; opacity: 0; }
+}
+@media print { .instagram-flutuante { display: none; } }
