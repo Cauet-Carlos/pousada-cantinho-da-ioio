@@ -1,5 +1,5 @@
 // URL_PLANILHA: link da planilha Google publicada como CSV.
-const URL_PLANILHA = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSPutcmZkPet7zmbIPfSkrECj-cJbUrQ6_XvYTBK-Z1BVxeydhQF5pz3VqBQtb45RLDe9XBrXXBsIPA/pubhtml?gid=1354800231&single=true';
+const URL_PLANILHA = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSPutcmZkPet7zmbIPfSkrECj-cJbUrQ6_XvYTBK-Z1BVxeydhQF5pz3VqBQtb45RLDe9XBrXXBsIPA/pub?gid=1975276769&single=true&output=csv';
 
 // Lista canônica dos quartos reais da pousada.
 const QUARTOS = [
