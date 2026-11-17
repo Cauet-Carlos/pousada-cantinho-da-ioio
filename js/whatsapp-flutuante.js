@@ -1,5 +1,5 @@
 (function () {
-  var NUMERO_WHATSAPP = '5597984578046'; // TEMPORÁRIO — número de teste, trocar para 5592981310470 antes de publicar
+  var NUMERO_WHATSAPP = '5592981310470';
   var MENSAGEM = 'Olá! Vim pelo site da Pousada Cantinho da Ioiô e gostaria de mais informações.';
 
   var link = document.createElement('a');

@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var form = document.getElementById('form-reserva');
   if (!form) return;
 
-  var numeroWhatsApp = '5597984578046'; // TEMPORÁRIO — número de teste, trocar antes de publicar
+  var numeroWhatsApp = '5592981310470'; 
   var avisoEl = document.getElementById('aviso-conflito');
   var dicaEl = document.getElementById('dica-quartos');
 
